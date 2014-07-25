@@ -1,0 +1,127 @@
+@import 'mixins';
+@import 'animations';
+
+$skyBlue: #00a3ef;
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: $skyBlue;
+  font: Helvetica, Verdana, Arial, sans-serif;
+}
+
+label {
+  color: #fff;
+  font-size: 20px;
+}
+h1 {
+  color: #fff;
+  padding: 0 20px;
+}
+
+.rainbow-outer {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  overflow: hidden;
+  width: 2000px;
+  height: 1600px;
+  margin-left: -1000px;
+  @include transform-origin(bottom center);
+}
+.rainbow {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  @include translate(0%, 50%);
+  background: radial-gradient(50% 50%, 
+      red 30%, red 40%,
+      orange 40%, orange 50%,
+      yellow 50%, yellow 60%,
+      green 60%, green 70%,
+      blue 70%, blue 80%,
+      indigo 80%, indigo 90%,
+      violet 90%);
+
+  &.crazy {
+    @include animation(craycrayzy 4s infinite);
+  }
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 5;
+    width: 30%;
+    height: 30%;
+    left: 50%;
+    top: 50%;
+    border-radius: 50%;
+    background: $skyBlue;
+    @include translate(-50%, -50%);
+  }
+}
+
+.controls {
+  position: relative;
+  z-index: 10;
+  padding: 20px;
+}
+
+.star {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 0;
+  margin-top: 30px;
+  background: transparent;
+  border-top: solid 20px #fff;
+  border-bottom: solid 20px #fff;
+  border-left: solid 20px transparent;
+  border-right: solid 20px transparent;
+  margin-left: 40px;
+  &:before{
+    content: "";
+    width: 60px;
+    height: 0;
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    background: transparent;
+    border-top: solid 20px #fff;
+    border-bottom: solid 20px #fff;
+    border-left: solid 20px transparent;
+    border-right: solid 20px transparent;
+    @include rotate(90);
+  } 
+}
+.plus {
+  position: relative;
+  display: inline-block;
+  width: 10px;
+  height: 100px;
+  margin-left: 40px;
+  background: #fff;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 42px;
+    left: -46px; 
+    width: 100px;
+    height: 10px;
+    background: #fff;
+  }
+}
+
+.sparkle-outer {
+  position: absolute;
+}
+
+.sparkle {
+  @include animation(sparkle 500ms infinite ease-out);
+}
+

@@ -1,0 +1,15 @@
+<div class="rainbow-outer" {{bind-attr style=cssScale}} >
+    <div {{bind-attr class=":rainbow crazy:crazy"}}>
+        <div class="sparkles">
+            {{#each sparkle in sparkles}}
+                {{x-sparkle}}
+            {{/each}}
+        </div>
+    </div>
+</div>
+
+<div class="controls">
+    <label>scale ({{scale}}): <br /> {{input type="range" min="0.2" max="2" value=scale step="0.1" }}</label><br />
+    <label>sparkles  {{input type="number" value=sparklesCount min="20" max="180" step="20" }}</label><br />
+    <label>crazy (webkit only) {{input type="checkbox" checked=crazy }}</label><br />
+</div>
